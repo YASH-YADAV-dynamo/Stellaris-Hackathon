@@ -1,0 +1,144 @@
+.wrapper {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.sectionTitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--fg-muted);
+}
+
+.select {
+  background: var(--bg);
+  border: 1px solid var(--grid-bright);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+.select:focus {
+  border-color: var(--accent);
+}
+
+.select option {
+  background: var(--bg-1);
+  color: var(--fg);
+}
+
+.paramGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paramLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+}
+
+.paramRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 3px;
+  background: var(--grid-bright);
+  outline: none;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--bid);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--bid);
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.paramValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bid);
+  min-width: 40px;
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+.descBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--grid);
+  border-radius: 8px;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--bg-1);
+  background: var(--fg-muted);
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.descText {
+  font-size: 10px;
+  color: var(--fg-muted);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 14px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .descBox {
+    padding: 8px 10px;
+  }
+}

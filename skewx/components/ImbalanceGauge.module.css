@@ -1,0 +1,127 @@
+.wrapper {
+  padding: 24px 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  justify-content: center;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.symbol {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+  font-weight: 600;
+}
+
+.value {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.value[data-side='bid'] { color: var(--bid); }
+.value[data-side='ask'] { color: var(--ask); }
+
+.sideLabel {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.sideLabel[data-side='bid'] {
+  color: var(--bid);
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.sideLabel[data-side='ask'] {
+  color: var(--ask);
+  background: rgba(255, 51, 102, 0.1);
+}
+
+[data-theme="light"] .sideLabel[data-side='bid'] {
+  background: rgba(5, 150, 105, 0.1);
+}
+
+[data-theme="light"] .sideLabel[data-side='ask'] {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.track {
+  position: relative;
+  height: 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--grid-bright);
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--grid-bright);
+  z-index: 2;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: width 0.12s ease-out;
+  border-radius: 4px;
+}
+
+.fillBid {
+  background: var(--bid);
+  opacity: 0.85;
+}
+
+.fillAsk {
+  background: var(--ask);
+  opacity: 0.85;
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 20px 22px 16px;
+    gap: 12px;
+  }
+
+  .value {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 16px 18px 14px;
+  }
+
+  .value {
+    font-size: 40px;
+  }
+}

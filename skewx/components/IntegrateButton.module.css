@@ -1,0 +1,201 @@
+.wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-2);
+  border: 1px solid var(--grid-bright);
+  color: var(--fg);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.trigger:hover {
+  background: var(--grid-bright);
+  border-color: var(--fg-muted);
+}
+
+.triggerIcon {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(300px, calc(100vw - 32px));
+  max-width: 300px;
+  padding: 12px 14px;
+  background: var(--bg-1);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--fg);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  padding: 10px 0;
+  background: var(--bg-1);
+  border: 2px solid var(--grid-bright);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+}
+
+.dropdownLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  padding: 6px 14px 8px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.option:hover {
+  background: var(--bg-2);
+  color: var(--fg);
+}
+
+.optionActive {
+  color: var(--fg);
+  font-weight: 600;
+  background: rgba(99, 102, 241, 0.12);
+}
+
+.optionCheck {
+  width: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 28px);
+  margin: 12px 14px 0;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--fg);
+  color: var(--bg);
+  border: 2px solid var(--fg);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.copyBtn:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.copyIcon {
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .tooltip {
+    display: none;
+  }
+
+  .dropdown {
+    left: 16px;
+    right: 16px;
+    min-width: auto;
+    width: calc(100vw - 32px);
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 6px 0;
+    border-width: 1px;
+    border-radius: 6px;
+  }
+
+  .dropdownLabel {
+    font-size: 10px;
+    padding: 4px 10px 6px;
+  }
+
+  .option {
+    padding: 6px 10px;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .optionCheck {
+    width: 14px;
+    font-size: 11px;
+  }
+
+  .copyBtn {
+    width: calc(100% - 20px);
+    margin: 8px 10px 0;
+    padding: 8px 10px;
+    font-size: 12px;
+    border-width: 1px;
+    border-radius: 4px;
+  }
+
+  .copyIcon {
+    font-size: 12px;
+  }
+}
+
+.dropdownDesc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+  padding: 10px 14px 0;
+  margin: 0 0 8px;
+  border-bottom: 1px solid var(--grid);
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .dropdownDesc {
+    display: block;
+    font-size: 10px;
+    line-height: 1.4;
+    padding: 6px 10px 0;
+    margin: 0 0 6px;
+  }
+}

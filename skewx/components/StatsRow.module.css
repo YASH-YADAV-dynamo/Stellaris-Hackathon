@@ -1,0 +1,120 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 20px;
+  border-right: 1px solid var(--grid);
+  position: relative;
+  transition: background 0.15s;
+}
+
+.card:hover {
+  background: var(--bg-2);
+}
+
+.card:last-child {
+  border-right: none;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+}
+
+.value {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.value[data-accent='bid'] { color: var(--bid); }
+.value[data-accent='ask'] { color: var(--ask); }
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+/* Tablet: 4-column grid (2 rows) */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: repeat(4, 1fr);
+    height: auto;
+  }
+
+  .card {
+    border-bottom: 1px solid var(--grid);
+  }
+
+  /* Remove right border at end of each row (4th position) */
+  .card:nth-child(4n) {
+    border-right: none;
+  }
+
+  /* Remove bottom border on last row (items 5–7 in a 4-col grid) */
+  .card:nth-last-child(-n+3) {
+    border-bottom: none;
+  }
+
+  /* Last item always gets no right border */
+  .card:last-child {
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+/* Mobile: 2-column grid */
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--grid);
+  }
+
+  .card:nth-child(4n) {
+    border-right: 1px solid var(--grid);
+  }
+
+  .card:nth-child(2n) {
+    border-right: none;
+  }
+
+  /* Last row items (6th and 7th) no bottom border */
+  .card:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .card:last-child {
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .value {
+    font-size: 20px;
+  }
+
+  .label {
+    font-size: 9px;
+  }
+}
+
+@keyframes flashAnim {
+  0%   { opacity: 0.2; transform: scale(0.97); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.flash .value {
+  animation: flashAnim 0.3s ease-out;
+}

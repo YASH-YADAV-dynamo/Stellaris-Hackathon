@@ -44,33 +44,51 @@ Place all your project files inside this folder.
 
 Your submission folder **must** include a `README.md` with the following structure:
 ```markdown
-# Project Name
+# SkewX — Orderbook Imbalance & Funding Arbitrage
 
 ## 👥 Team Name
-<!-- Your team name -->
+SkewX
 
 ## 🧑‍💻 Team Members
 | Name | Role | GitHub |
 |------|------|--------|
-| Name 1 | Frontend | @username |
-| Name 2 | Backend | @username |
+| Yash | Full-stack | @yash2 |
 
 ## 💡 Problem Statement
-<!-- What problem are you solving? -->
+Traders struggle to compare fragmented liquidity/funding signals across multiple perp venues in real time.  
+SkewX solves this with a unified orderbook + funding dashboard and execution flow for Hyperliquid/HotStuff, helping users react faster to imbalance and funding arbitrage opportunities.
 
 ## 🛠️ Tech Stack
-<!-- List the tools, frameworks, languages used -->
+- Next.js 16, React 19, TypeScript
+- Zustand for client state
+- Chart.js / react-chartjs-2 for visualization
+- Hyperliquid SDK and HotStuff TypeScript SDK for trade execution
+- Node.js + Next API routes
 
 ## 🔗 Links
-- **Live Demo:** [link]
-- **Video Demo:** [link](if applicable)
-- **Presentation (PPT/PDF):** [link]
+- **Live Demo:** [TBD]
+- **Video Demo:** [TBD]
+- **Presentation (PPT/PDF):** [TBD]
 
 ## 📸 Screenshots
-<!-- Add screenshots or a GIF of your project -->
+- Add UI screenshots/GIF from:
+  - Orderbook Imbalance dashboard
+  - Funding Arbitrage screener
+  - Trade execution modal
 
 ## 🚀 How to Run Locally
-<!-- Step-by-step instructions to run your project -->
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
+3. Open:
+   ```text
+   http://localhost:3000
+   ```
 ```
 
 ---

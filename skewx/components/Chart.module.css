@@ -1,0 +1,68 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid var(--grid);
+  flex-shrink: 0;
+}
+
+.panelTitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--fg);
+}
+
+.panelSub {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+}
+
+.chartArea {
+  flex: 1;
+  position: relative;
+  padding: 12px 8px 8px;
+  min-height: 220px;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .panelHeader {
+    padding: 10px 14px 8px;
+  }
+
+  .panelTitle {
+    font-size: 11px;
+  }
+
+  .chartArea {
+    padding: 8px 4px 6px;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chartArea {
+    min-height: 160px;
+  }
+}

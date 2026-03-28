@@ -1,0 +1,113 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bg);
+  width: 100%;
+}
+
+.main {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  padding: 12px 14px 16px;
+}
+
+/* ── Bento grid ─────────────────────────────────────────────────────── */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  grid-template-areas:
+    "formula gauge"
+    "stats   stats"
+    "depth   imbalanceChart"
+    "volume  volume";
+  gap: 12px;
+  min-width: 0;
+}
+
+/* ── Bento card base ─────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-1);
+  border: 1px solid var(--grid);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-width: 0;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--grid-bright);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── Card placement ─────────────────────────────────────────────────── */
+.formulaCard        { grid-area: formula; }
+.gaugeCard          { grid-area: gauge; }
+.statsCard          { grid-area: stats; }
+.depthCard          { grid-area: depth; }
+.imbalanceChartCard { grid-area: imbalanceChart; min-height: 300px; }
+.volumeChartCard    { grid-area: volume; min-height: 260px; }
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .bentoGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 8px 10px 12px;
+  }
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "gauge"
+      "stats"
+      "formula"
+      "imbalanceChart"
+      "depth"
+      "volume";
+    gap: 8px;
+  }
+  .imbalanceChartCard { min-height: 240px; }
+  .volumeChartCard    { min-height: 200px; }
+}
+
+@media (max-width: 480px) {
+  .main { padding: 6px 8px 10px; }
+  .bentoGrid { gap: 6px; }
+  .imbalanceChartCard { min-height: 200px; }
+  .volumeChartCard    { min-height: 180px; }
+}
+
+/* ── Error bar ──────────────────────────────────────────────────────── */
+.errorBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-top: 1px solid var(--ask);
+  background: rgba(220, 38, 38, 0.06);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ask);
+  flex-shrink: 0;
+}
+
+.errorDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ask);
+  flex-shrink: 0;
+}

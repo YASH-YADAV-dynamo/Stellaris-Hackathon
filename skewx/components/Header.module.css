@@ -1,0 +1,235 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 56px;
+  border-bottom: 1px solid var(--grid);
+  background: var(--bg-1);
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--grid-bright);
+  color: var(--fg-muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.backBtn:hover {
+  color: var(--fg);
+  border-color: var(--fg-muted);
+  background: var(--grid);
+}
+
+.brandName {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--fg);
+}
+
+.divider {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.metric {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+  font-weight: 600;
+}
+
+.select {
+  background: var(--bg);
+  border: 1px solid var(--grid-bright);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  transition: border-color 0.15s;
+}
+
+.select:focus {
+  border-color: var(--accent);
+}
+
+.select option {
+  background: var(--bg-1);
+  color: var(--fg);
+}
+
+.reconnectBtn {
+  background: var(--bg);
+  border: 1px solid var(--grid-bright);
+  color: var(--fg-muted);
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.reconnectBtn:hover {
+  color: var(--fg);
+  border-color: var(--fg-muted);
+  background: var(--grid);
+}
+
+.themeToggle {
+  background: var(--bg);
+  border: 1px solid var(--grid-bright);
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 5px 12px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.themeToggle:hover {
+  color: var(--fg);
+  border-color: var(--fg-muted);
+  background: var(--grid);
+}
+
+.statusGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.statusLabel {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.clock {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  min-width: 72px;
+  text-align: right;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+/* Tablet: allow wrapping, hide subtitle */
+@media (max-width: 900px) {
+  .header {
+    height: auto;
+    min-height: 52px;
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .metric,
+  .divider {
+    display: none;
+  }
+
+  .controls {
+    gap: 8px;
+    order: 2;
+  }
+
+  .statusGroup {
+    order: 3;
+    margin-left: auto;
+  }
+}
+
+/* Mobile: condense further */
+@media (max-width: 540px) {
+  .header { padding: 8px 12px; }
+  .brandName { font-size: 12px; }
+  .clock { display: none; }
+  .themeToggle { padding: 4px 8px; font-size: 9px; }
+  .label { display: none; }
+  .controls { gap: 6px; }
+}
+
+/* ── Status states ───────────────────────────────────────────────────── */
+
+/* Status states */
+.live {
+  color: var(--bid) !important;
+}
+.statusDot.live {
+  background: var(--bid);
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.connecting {
+  color: #f0a500 !important;
+}
+.statusDot.connecting {
+  background: #f0a500;
+  animation: blink 0.6s ease-in-out infinite;
+}
+
+.offline {
+  color: var(--ask) !important;
+}
+.statusDot.offline {
+  background: var(--ask);
+}

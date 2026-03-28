@@ -1,0 +1,14 @@
+[01:53:51.154] Server  ERROR   ⨯ Error: Cannot find module 'next/dist/client/components/builtin/global-not-found'
+Require stack:
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\dev\on-demand-entry-handler.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\dev\hot-reloader-turbopack.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\lib\router-server.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\lib\start-server.js
+[01:54:36.173] Server  ERROR   ⨯ Error: Cannot find module 'next/dist/client/components/builtin/global-not-found'
+Require stack:
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\dev\on-demand-entry-handler.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\dev\hot-reloader-turbopack.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\lib\router-server.js
+- D:\stellar\orderbook-imbalance\node_modules\next\dist\server\lib\start-server.js

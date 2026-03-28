@@ -1,0 +1,174 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 52px 1fr;
+  overflow: hidden;
+  height: 100%;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 44px 76px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--grid);
+  background: var(--bg-2);
+}
+
+.colLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 44px 76px;
+  align-items: center;
+  padding: 5px 14px;
+  border-bottom: 1px solid var(--grid);
+  overflow: hidden;
+  transition: background 0.1s;
+}
+
+.row:hover {
+  background: var(--bg-2);
+}
+
+.rowAsk {
+  grid-template-columns: 76px 44px 1fr;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 0.1;
+  transition: width 0.12s ease-out;
+  pointer-events: none;
+}
+
+.barBid {
+  right: 0;
+  background: var(--bid);
+}
+
+.barAsk {
+  left: 0;
+  background: var(--ask);
+}
+
+.price {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+.priceBid {
+  color: var(--bid);
+  text-align: right;
+}
+
+.priceAsk {
+  color: var(--ask);
+  text-align: left;
+}
+
+.orders {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.amount {
+  font-size: 11px;
+  color: var(--fg-muted);
+  position: relative;
+  z-index: 1;
+  text-align: right;
+}
+
+.rowAsk .amount {
+  text-align: left;
+}
+
+.centerDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--grid);
+  border-right: 1px solid var(--grid);
+  background: var(--bg-2);
+}
+
+.spreadLabel {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--fg-muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .wrapper {
+    grid-template-columns: 1fr 36px 1fr;
+  }
+
+  .header {
+    grid-template-columns: 1fr 36px 56px;
+    padding: 8px 10px;
+  }
+
+  .row {
+    grid-template-columns: 1fr 36px 56px;
+    padding: 4px 10px;
+  }
+
+  .rowAsk {
+    grid-template-columns: 56px 36px 1fr;
+  }
+
+  .centerDivider {
+    width: 36px;
+  }
+
+  .price {
+    font-size: 10px;
+  }
+
+  .orders,
+  .amount {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Hide ORDERS column on very small screens to prevent overflow */
+  .header {
+    grid-template-columns: 1fr 56px;
+  }
+
+  .row {
+    grid-template-columns: 1fr 56px;
+  }
+
+  .rowAsk {
+    grid-template-columns: 56px 1fr;
+  }
+
+  .orders {
+    display: none;
+  }
+}

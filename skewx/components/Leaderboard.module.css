@@ -1,0 +1,294 @@
+/* ═══════════════════════════════════════════════════════
+   Leaderboard — Notion-style table
+   ═══════════════════════════════════════════════════════ */
+
+.tableScroll {
+  flex: 1 1 auto;
+  height: 0;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+}
+
+.table {
+  min-width: 100%;
+  width: max-content;
+  background: var(--bg-1);
+}
+
+/* ── Shared row layout ── */
+.row,
+.dataRow {
+  display: grid;
+  grid-template-columns: 36px 200px 120px 160px 90px 90px 130px 80px;
+  align-items: center;
+  padding: 0 20px;
+  gap: 0;
+  min-width: 0;
+  width: max-content;
+  min-width: 100%;
+}
+
+/* ── Header row ── */
+.headRow {
+  height: 36px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--grid);
+}
+
+.headRow .col {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+
+/* ── Body container (animated rows live here) ── */
+.body {
+  position: relative;
+  overflow: visible;
+  width: max-content;
+  min-width: 100%;
+}
+
+/* ── Data rows ── */
+.dataRow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: auto;
+  height: 72px; /* must match ROW_H in TSX */
+  border-bottom: 1px solid var(--grid);
+  background: var(--bg-1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  cursor: default;
+}
+
+.dataRow:last-child {
+  border-bottom: none;
+}
+
+.dataRow:hover {
+  background: var(--bg-2);
+}
+
+/* ── Shared cell base ── */
+.col {
+  font-size: 12px;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 12px;
+}
+
+/* right-aligned number columns */
+.numCol {
+  text-align: right;
+  padding-right: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* ── Rank ── */
+.rankCol {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+}
+
+/* ── Exchange column ── */
+.dexCol {
+  /* The .col base styles give overflow:hidden; we need overflow visible for children */
+  overflow: visible;
+}
+
+/* Inner stack: icon on top, name below */
+.dexCell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  justify-content: center;
+}
+
+/* Icon wrapper */
+.iconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 7px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--grid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dexIcon {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 7px;
+  display: block;
+}
+
+/* Fallback colored circle when image fails */
+.dexDotFallback {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Exchange name — sits below the icon */
+.dexName {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ── Imbalance ── */
+.imbCol {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg);
+  transition: color 0.3s;
+}
+
+.imbCol[data-dir='bid'] { color: var(--bid); }
+.imbCol[data-dir='ask'] { color: var(--ask); }
+.imbCol[data-dir='none'] { color: var(--muted); }
+
+/* ── Direction ── */
+.dirCol {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  letter-spacing: 0.03em;
+}
+
+.dirCol[data-dir='bid'] { color: var(--bid); opacity: 0.85; }
+.dirCol[data-dir='ask'] { color: var(--ask); opacity: 0.85; }
+
+/* ── Volumes ── */
+.volCol {
+  color: var(--fg-muted);
+}
+
+.volAskCol {
+  color: var(--fg-muted);
+}
+
+/* ── Status ── */
+.statusCol {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--muted);
+}
+
+.statusDot[data-s='live'] { background: #22c55e; }
+.statusDot[data-s='wait'] { background: #f59e0b; }
+.statusDot[data-s='off']  { background: var(--muted); }
+
+.statusText {
+  font-size: 11px;
+  color: var(--fg-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ── Action ── */
+.actionCol {
+  padding-right: 0;
+}
+
+.openLink {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.openLink:hover {
+  color: var(--fg);
+}
+
+/* ── Empty state ── */
+.empty {
+  padding: 32px 20px;
+  font-size: 12px;
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+/* ════════════════════════════════════════════════════════
+   Responsive — collapse to mobile stacked layout
+   ════════════════════════════════════════════════════════ */
+
+@media (max-width: 1000px) {
+  .table { min-width: 820px; }
+
+  .row,
+  .dataRow {
+    grid-template-columns: 32px 160px 110px 140px 78px 78px 110px 64px;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tableScroll {
+    flex: none;
+    height: auto;
+    overflow-y: visible;
+    overflow-x: auto;
+  }
+
+  .table { min-width: 700px; }
+
+  .row,
+  .dataRow {
+    /* Narrow everything, keep all columns */
+    grid-template-columns: 28px 130px 96px 120px 68px 68px 96px 56px;
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .table { min-width: 628px; }
+
+  .row,
+  .dataRow {
+    grid-template-columns: 26px 124px 90px 108px 68px 68px 90px 54px;
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table { min-width: 588px; }
+
+  .row,
+  .dataRow {
+    grid-template-columns: 24px 114px 86px 100px 64px 64px 86px 50px;
+    padding: 0 10px;
+  }
+}

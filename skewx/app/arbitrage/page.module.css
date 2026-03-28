@@ -1,0 +1,112 @@
+.page {
+  /* Exactly fill the viewport — this is the true scroll boundary on desktop */
+  height: 100dvh;
+  height: 100vh; /* fallback */
+  width: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 32px;
+  height: 48px;
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--grid);
+  flex-shrink: 0;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.navDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.navTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.homeLink {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.homeLink:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.themeBtn {
+  background: transparent;
+  border: 1px solid var(--grid-bright);
+  color: var(--fg-muted);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  height: 26px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.themeBtn:hover {
+  color: var(--fg);
+  border-color: var(--fg-muted);
+}
+
+.main {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 900px) {
+  .page { height: auto; overflow: visible; }
+  .main { overflow: visible; flex: none; }
+  .nav  { position: relative; }
+}
+
+@media (max-width: 640px) {
+  .nav      { padding: 0 12px; }
+  .homeLink { font-size: 10px; }
+}
